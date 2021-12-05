@@ -20,6 +20,7 @@ public class DrawingView extends View {
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
+    private boolean erase = false;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -39,7 +40,6 @@ public class DrawingView extends View {
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
-
         canvasPaint = new Paint(Paint.DITHER_FLAG);
     }
 
@@ -92,6 +92,14 @@ public class DrawingView extends View {
 
     public float getLastBrushSize(){
         return lastBrushSize;
+    }
+
+    public void setErase(boolean isErase){
+        erase = isErase;
+        if(erase)
+            drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        else
+            drawPaint.setXfermode(null);
     }
 
     public void startNew(){
