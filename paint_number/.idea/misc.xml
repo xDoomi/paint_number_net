@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/xDoomi/AndroidStudioProjects/paint_number_net/paint_number/app/src/main/res/drawable/large.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/xDoomi/AndroidStudioProjects/paint_number_net/paint_number/app/src/main/res/drawable/medium.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/xDoomi/AndroidStudioProjects/paint_number_net/paint_number/app/src/main/res/drawable/small.xml" value="0.2846153846153846" />
         <entry key="..\:/Users/xDoomi/AndroidStudioProjects/paint_number_net/paint_number/app/src/main/res/layout/activity_main.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/xDoomi/AndroidStudioProjects/paint_number_net/paint_number/app/src/main/res/layout/brush_chooser.xml" value="0.21693840579710144" />
       </map>
     </option>
   </component>

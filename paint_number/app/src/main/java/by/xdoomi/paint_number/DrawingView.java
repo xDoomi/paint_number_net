@@ -2,6 +2,8 @@ package by.xdoomi.paint_number;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.util.TypedValue;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -17,6 +19,7 @@ public class DrawingView extends View {
     private int paintColor = 0xFF660000;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
+    private float brushSize, lastBrushSize;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -27,9 +30,12 @@ public class DrawingView extends View {
         drawPath = new Path();
         drawPaint = new Paint();
 
+        brushSize = getResources().getInteger(R.integer.medium_size);
+        lastBrushSize = brushSize;
+
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);
-        drawPaint.setStrokeWidth(20);
+        drawPaint.setStrokeWidth(brushSize);
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -71,6 +77,21 @@ public class DrawingView extends View {
         }
         invalidate();
         return true;
+    }
+
+    public void setBrushSize(float newSize){
+        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                newSize, getResources().getDisplayMetrics());
+        brushSize=pixelAmount;
+        drawPaint.setStrokeWidth(brushSize);
+    }
+
+    public void setLastBrushSize(float lastSize){
+        lastBrushSize = lastSize;
+    }
+
+    public float getLastBrushSize(){
+        return lastBrushSize;
     }
 
     public void startNew(){
